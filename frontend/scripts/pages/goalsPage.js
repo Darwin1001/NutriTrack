@@ -11,7 +11,7 @@ export const renderGoalsPage = async () => {
   const goalContainer = document.createElement("div");
   goalContainer.classList.add("goal-container");
 
-  //  formulaire et 
+  //  formulaire
   section.appendChild(renderGoalForm(goalContainer));
 
   try {

@@ -7,15 +7,23 @@
       "proteins": 8,
       "carbs": 80,
       "fats": 10
+    },
+    {
+      "id": 1743698658948,
+      "name": "poulet",
+      "calories": 100,
+      "proteins": 20,
+      "carbs": 1,
+      "fats": 2
     }
   ],
   "goals": [
     {
-      "id": 1743685329877,
-      "calories": 1600,
+      "id": 1743698636637,
+      "calories": 1700,
       "proteins": 130,
       "carbs": 120,
-      "fats": 40
+      "fats": 30
     }
   ]
 }

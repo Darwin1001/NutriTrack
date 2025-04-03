@@ -9,7 +9,6 @@ app.use(bodyParser.json());
 
 const PORT = 5000;
 
-// Ajoutez ce middleware pour définir le type MIME des fichiers .js
 app.use((req, res, next) => {
   if (req.path.endsWith(".js")) {
     res.setHeader("Content-Type", "application/javascript");
@@ -17,7 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware pour servir les fichiers statiques du frontend
+// fichiers front
 app.use(express.static(path.join(__dirname, "frontend")));
 
 app.get("/", (req, res) => {
@@ -31,7 +30,7 @@ const fs = require("fs");
 
 const DB_FILE = path.join(__dirname, "db.json");
 
-// Fonction utilitaire pour lire et écrire dans le fichier JSON
+//lire et écrire dans JSON
 const readDB = () => JSON.parse(fs.readFileSync(DB_FILE, "utf-8"));
 const writeDB = (data) => fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
 
@@ -41,7 +40,7 @@ app.get("/meals", (req, res) => {
   res.json(db.meals);
 });
 
-// Ajouter un repas
+// Ajouterun repas
 app.post("/meals", (req, res) => {
   const db = readDB();
   const newMeal = { id: Date.now(), ...req.body };
@@ -49,23 +48,23 @@ app.post("/meals", (req, res) => {
   writeDB(db);
   res.status(201).json(newMeal);
 });
-// Récupérer les objectifs
+// Récupérer objet
 app.get("/goals", (req, res) => {
     const db = readDB();
     res.json(db.goals);
   });
   
-  // Définir un objectif nutritionnel
+  // Définir objet 
   app.post("/goals", (req, res) => {
     const db = readDB();
     const newGoal = { id: Date.now(), ...req.body };
-    db.goals = [newGoal]; // Un seul objectif à la fois
+    db.goals = [newGoal]; 
     writeDB(db);
     res.status(201).json(newGoal);
   });
-  const { map, reduce, prop, pipe } = require("ramda");
+  const { reduce } = require("ramda");
 
-// Fonction pour calculer les totaux journaliers
+//  calcule totaux journaliers
 const calculateTotals = (meals) => ({
     calories: reduce((acc, meal) => acc + (meal.calories || 0), 0, meals),
     proteins: reduce((acc, meal) => acc + (meal.proteins || 0), 0, meals),
@@ -73,10 +72,9 @@ const calculateTotals = (meals) => ({
     fats: reduce((acc, meal) => acc + (meal.fats || 0), 0, meals),
   });
 
-// Route pour récupérer les totaux journaliers
+// Route totaux journaliers
 app.get("/totals", (req, res) => {
   const db = readDB();
-  console.log("Repas enregistrés:", db.meals);
   const totals = calculateTotals(db.meals);
   res.json(totals);
 });
@@ -87,7 +85,7 @@ const calculateProgress = (totals, goals) => ({
     fats: `${totals.fats} / ${goals.fats} (${((totals.fats / goals.fats) * 100).toFixed(1)}%)`,
   });
   
-  // Route pour voir la progression par rapport aux objectifs
+  // Route progression
   app.get("/progress", (req, res) => {
     const db = readDB();
     
@@ -96,7 +94,7 @@ const calculateProgress = (totals, goals) => ({
     }
   
     const totals = calculateTotals(db.meals);
-    const progress = calculateProgress(totals, db.goals[0]); // On prend le premier objectif
+    const progress = calculateProgress(totals, db.goals[0]); 
     res.json(progress);
   });
 
