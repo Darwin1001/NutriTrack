@@ -1,0 +1,21 @@
+{
+  "meals": [
+    {
+      "id": 1743684693504,
+      "name": "riz",
+      "calories": 300,
+      "proteins": 8,
+      "carbs": 80,
+      "fats": 10
+    }
+  ],
+  "goals": [
+    {
+      "id": 1743685329877,
+      "calories": 1600,
+      "proteins": 130,
+      "carbs": 120,
+      "fats": 40
+    }
+  ]
+}
