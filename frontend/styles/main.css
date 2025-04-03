@@ -258,7 +258,7 @@ form button:hover {
 .progress {
     height: 100%;
     background: #6b46c1;
-    width: 0%; /* Dynamique : sera mis à jour via JavaScript */
+    width: 0%; 
     border-radius: 5px;
     transition: width 0.3s ease-in-out;
 }
@@ -312,7 +312,7 @@ form button:hover {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
-    align-self: flex-end; /* Aligne le bouton à droite */
+    align-self: flex-end; 
 }
 
 .delete-meal-btn:hover {

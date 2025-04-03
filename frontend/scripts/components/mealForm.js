@@ -19,7 +19,7 @@ export const renderMealForm = (mealListContainer) => {
     const meal = {
       name: document.getElementById("meal-name").value,
       calories: parseInt(document.getElementById("meal-calories").value),
-      proteins: parseInt(document.getElementById("meal-proteines").value),
+      proteins: parseInt(document.getElementById("meal-proteins").value),
       carbs: parseInt(document.getElementById("meal-carbs").value),
       fats: parseInt(document.getElementById("meal-fats").value),
     };

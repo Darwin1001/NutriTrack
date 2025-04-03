@@ -17,7 +17,7 @@ export const renderMealList = async () => {
         mealCard.innerHTML = `
           <h3>${meal.name}</h3>
           <p><strong>Calories :</strong> ${meal.calories} kcal</p>
-          <p><strong>Protéines :</strong> ${meal.proteines} g</p>
+          <p><strong>Protéines :</strong> ${meal.proteins} g</p>
           <p><strong>Glucides :</strong> ${meal.carbs} g</p>
           <p><strong>Lipides :</strong> ${meal.fats} g</p>
         `;

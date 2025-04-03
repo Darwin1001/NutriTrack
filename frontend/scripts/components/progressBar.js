@@ -4,6 +4,13 @@ export const renderProgressBar = async () => {
   const container = document.createElement("div");
   container.classList.add("progress-container");
 
+  
+  const translationMap = {
+    proteins: "Protéines",
+    carbs: "Glucides",
+    fats: "Lipides",
+  };
+
   try {
     const progress = await fetchProgress();
 
@@ -11,10 +18,10 @@ export const renderProgressBar = async () => {
       const progressCard = document.createElement("div");
       progressCard.classList.add("progress-card");
 
-      const percentage = parseFloat(progress[key].split("(")[1].replace("%)", "")); // Extrait le pourcentage
+      const percentage = parseFloat(progress[key].split("(")[1].replace("%)", ""));
 
       progressCard.innerHTML = `
-        <h3>${key.charAt(0).toUpperCase() + key.slice(1)}</h3>
+        <h3>${translationMap[key] || key}</h3>
         <p>${progress[key]}</p>
         <div class="progress-bar">
           <div class="progress" style="width: ${percentage}%;"></div>
